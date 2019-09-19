@@ -16,6 +16,6 @@ RUN apt-get update && apt-get install -y \
 
 # Install packages
 # rstanarmが2017/12/21からコンパイルでコケる。pythonがらみっぽいので外す
-RUN Rscript -e "install.packages(c('githubinstall','rstan','ggmcmc','bayesplot','brms'))"
+#RUN Rscript -e "install.packages(c('githubinstall','rstan','ggmcmc','bayesplot','brms'))"
 
 CMD ["/init"]
