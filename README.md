@@ -3,16 +3,9 @@ Dockerfile for rstan on RStudio Server. Sorry, this repository is designed for J
 
 このDockerfileは,`rocker/tidyverse`をベースにし,`tokyor/rstudio`のDockerfileの記述をベースにして,以下のパッケージおよびそれらの依存パッケージを組み込んだものです。
 
-- githubinstall
 - rstan
-- rstanarm
-- ggmcmc
-- bayesplot
-- brms
 - tidybayes
 - tidyverse群パッケージ
-- rmarkdown
-- shiny 等
 
 必要に応じて,更新およびパッケージの見直しをしていきます。
 
@@ -27,7 +20,7 @@ Dockerfile for rstan on RStudio Server. Sorry, this repository is designed for J
 端末を開いて,以下のコマンドを実行してください:
 
 ```
-$ docker pull kazutan/stan-d:latest
+$ docker pull yyachi/stan-d:latest
 ```
 
 Ubuntuの場合,sudoが必要です。
@@ -38,14 +31,14 @@ Ubuntuの場合,sudoが必要です。
 $ docker images
 ```
 
-この中に`kazutan/stan-d`というイメージがあればOKです。
+この中に`yyachi/stan-d`というイメージがあればOKです。
 
 ### Dockerコンテナの作成
 
 端末を開いて,以下のコマンドを実行してください:
 
 ```
-$ docker run -p 8787:8787 -v (リンクさせたいディレクトリパス):/home/rstudio -d --name (コンテナ名) kazutan/stan-d
+$ docker run -p 8787:8787 -v (リンクさせたいディレクトリパス):/home/rstudio -d --name (コンテナ名) -e PASSWORD=rstudio yyachi/stan-d
 ```
 
 Ubuntuの場合は`sudo`が必要です。
@@ -53,7 +46,7 @@ Ubuntuの場合は`sudo`が必要です。
 必要に応じてオプションなどは変更してください。例えば,手元PCのホームディレクトリとコンテナのホームディレクトリをリンクさせ,コンテナ名を"kosaki"にしたいなら,以下のような感じになります:
 
 ```
-$ docker run -p 8787:8787 -v ~:/home/rstudio -d --name kosoaki kazutan/stan-d
+$ docker run -p 8787:8787 -v ~:/home/rstudio -d --name kosoaki yyachi/stan-d
 ```
 
 現在起動しているコンテナを確認するため,以下のコマンドを実行してみます:
